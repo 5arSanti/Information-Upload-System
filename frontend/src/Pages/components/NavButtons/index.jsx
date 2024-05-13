@@ -23,20 +23,8 @@ const NavButtons = ({className="idioma-icon-barra-superior-govco"}) => {
                     <Link to={"/home"} className={`${className}`}>
                         Home
                     </Link>
-                    <Link to={"/upload"} className={`${className}`}>
-                        Publicar
-                    </Link>
-                    <Link to={"/dashboard"} className={`${className}`}>
-                        Dashboard
-                    </Link>
-                    <Link to={"/document"} className={`${className}`}>
-                        Boletin
-                    </Link>
-                    <Link to={"/slider"} className={`${className}`}>
-                        Slider
-                    </Link>
-                    <Link to={"/register"} className={`${className}`}>
-                        Registro
+                    <Link to={"/users"} className={`${className}`}>
+                        Usuarios
                     </Link>
                       <button  
                         className={`${className}`} 

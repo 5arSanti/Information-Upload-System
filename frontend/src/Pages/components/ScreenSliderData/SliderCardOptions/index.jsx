@@ -17,25 +17,25 @@ const SliderCardOptions = ({item, onEdit, onDelete}) => {
                 <SliderCard item={item}/>
 
                 <WrapperContainer2 flexDirection="column" padding={20} justifyContent="center">
-                <ButtonCard 
-                    title="Editar"
-                    onClick={() => onEdit(item)}
-                    padding={15}
-                >
-                    <MdEdit />
-                </ButtonCard>
-                <ButtonCard
-                    title="Eliminar"
-                    onClick={() => context.setOpenConfirmationModal({
-                        status: true,
-                        title: "¿Esta seguro que desea eliminar esta información?",
-                        onConfirm: () => onDelete(item),
-                        onCancel: () => context.setOpenConfirmationModal({status:false}),
-                    })}
-                    padding={15}
-                >
-                    <RiDeleteBin6Line  />
-                </ButtonCard>
+                    <ButtonCard 
+                        title="Editar"
+                        onClick={() => onEdit(item)}
+                        padding={15}
+                    >
+                        <MdEdit />
+                    </ButtonCard>
+                    <ButtonCard
+                        title="Eliminar"
+                        onClick={() => context.setOpenConfirmationModal({
+                            status: true,
+                            title: "¿Esta seguro que desea eliminar esta información?",
+                            onConfirm: () => onDelete(item),
+                            onCancel: () => context.setOpenConfirmationModal({status:false}),
+                        })}
+                        padding={15}
+                    >
+                        <RiDeleteBin6Line  />
+                    </ButtonCard>
                 </WrapperContainer2>
             </AllInfoGridContainer>
         </WrapperContainer1>

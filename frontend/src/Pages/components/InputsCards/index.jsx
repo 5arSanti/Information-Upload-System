@@ -27,7 +27,7 @@ const OptionInputCard = ({id, label, array=[], onChange, defaultValue=0}) => {
                 name={id} 
                 id={id}
                 onChange={(event) => {onChange(event.target.value)}}
-                value={defaultValue}
+                value={defaultValue || null}
             >
                 {array?.map((item, index) => (
                     <option 

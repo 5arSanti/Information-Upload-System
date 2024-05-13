@@ -10,6 +10,8 @@
     font-size: 16px;
 	opacity: 0.9;
 	transition: background-color 0.20s ease;
+
+    text-align: center;
 }
 .button-card-container:hover {
     background-color: var(--lines-color);

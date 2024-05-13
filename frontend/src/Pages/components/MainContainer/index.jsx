@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { removeFirstLetter } from '../../../utils/strings';
 
 import { DateCard } from "../DateCard";
+import { IoIosArrowForward } from "react-icons/io";
 
 
 import "./styles.css"
@@ -14,7 +15,7 @@ const MainContainer = ({children}) => {
 
     return(
         <div className="main-container">
-            <DropNav/>
+            <DateCard className='top-left'><IoIosArrowForward/> {text}</DateCard>
             <DateCard/>
 
             <div className="home-container">

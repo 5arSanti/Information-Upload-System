@@ -21,7 +21,7 @@ router.get("/", async (request, response) => {
 router.post("/", async (request, response) => {
 
 	try {
-		const query = "INSERT INTO slider_dat (`NOMBRE`,`VALOR`,`PORCENTAJE`, `ICONO`, `FECHA_CREACION`) VALUES (?,?,?,?,?)";
+		const query = "INSERT INTO slider_data (`NOMBRE`,`VALOR`,`PORCENTAJE`, `ICONO`, `FECHA_CREACION`) VALUES (?,?,?,?,?)";
 
 		const fechaActual = obtenerFechaHoraHoy();
 
@@ -44,6 +44,7 @@ router.post("/", async (request, response) => {
 			return response.json({ Status: "Success", message: "Datos guardados correctamente" });
 		});
 	} catch (err) {
+		console.log(err)
 		return response.status(500).json({Error: err.message});
 	}
 })

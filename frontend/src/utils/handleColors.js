@@ -8,7 +8,7 @@ const handleColorsByFilters = (activeHighContrast) => {
         "--confirm-color": "#069169",
         "--cancel-color": "#D31F3F",
         "--time-color": "#3366cc",
-        "--gov-accesibility-card": "#E0161E",
+        "--gov-accesibility-card": "#f5004e",
         "--black-to-white-color": "#000000",
         "--white-to-black-color": "#FFFFFF",
         "--lines-color": "#681d35",

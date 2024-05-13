@@ -27,13 +27,13 @@ const RegisterScreen = () => {
 
     const handleRegister = (event) => {
         event.preventDefault();
-        handlePostData(event, values, "/user/register", () => navigate("/login"));
+        handlePostData(event, values, "/user/register");
     }
 
     return(
 		<AuthWrapper>
 			<Title>
-				Registrar Nuevo Usuario Administrador
+				Registrar Nuevo Usuario
 			</Title>
             
 			<div className="login-container">
@@ -46,7 +46,7 @@ const RegisterScreen = () => {
 				<form className="login-form-container" onSubmit={handleRegister}>
                     <InputCard
                         id={"name"}
-                        label={"Name:"}
+                        label={"Nombre:"}
                         placeholder="Ingrese su nombre"
                         onChange={(event) => handleInputChange("name", event, setValues)}
                         defaultValue={values?.name}

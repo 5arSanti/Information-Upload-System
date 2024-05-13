@@ -21,14 +21,12 @@ import { AccesibilityCard } from "../components/AccesibilityCard";
 import { GovNavbar } from "../components/GovNavbars";
 import { LoginScreen } from "../Screens/LoginScreen";
 import { RegisterScreen } from "../Screens/RegisterScreen";
-import { DashboardScreen } from "../Screens/DashboardScreen";
 import { ConfirmationModal } from "../components/ConfirmationModal";
-import { DocumentScreen } from "../Screens/DocumentScreen";
 import { ToastContainer } from "react-toastify";
 import { UploadScreen } from "../Screens/UploadScreen";
 import { NavImagesCard } from "../components/NavImagesCard";
-import { SliderDataScreen } from "../Screens/SliderDataScreen";
 import { SliderNavContainer } from "../components/SliderNavContainer";
+import { UsersScreen } from "../Screens/UsersScreen";
 
 const Wrapper = ({children}) => {
     const location = useLocation();
@@ -45,17 +43,13 @@ const AppRoutes = () => {
     const { auth } = context;
 
     let routes = useRoutes([
-        {path: "/home", element: <Home/>},
+        {path: "/home", element: <UploadScreen/>},
         {path: "/*", element: <Navigate replace to={"/home"}/>},
-        {path: "/dashboard", element: <DashboardScreen/>},
-        {path: "/document", element: <DocumentScreen/>},
-        {path: "/upload", element: <UploadScreen/>},
-        {path: "/slider", element: <SliderDataScreen/>},
+        {path: "/users", element: <UsersScreen/>},
 
         
         {path: "/register", element: auth ? <RegisterScreen/> : <Navigate replace to={"/login"} />},
-        {path: "/login", element: !auth ? <LoginScreen/> : <Navigate replace to={"/home"}/>},
-        
+        {path: "/login", element: !auth ? <LoginScreen/> : <Navigate replace to={"/login"}/>},
     ]);
     
     return routes;

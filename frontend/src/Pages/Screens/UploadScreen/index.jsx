@@ -6,17 +6,12 @@ import { scrollToValue } from "../../../utils/scrollToValue";
 
 
 const UploadScreen = () => {
-    React.useEffect(() => {
-        scrollToValue(0, 350)
-    }, [])
-
     return (
         <AuthWrapper>
             <Title>
-                Carga de Archivos para Publicación
+                Bienvenido al sistema de cargue de información
             </Title>
             <UploadInfoContainer/>
-            
         </AuthWrapper>
     );
 }

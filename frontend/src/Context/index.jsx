@@ -52,9 +52,8 @@ const AppProvider = ({children}) => {
     React.useEffect(() => {
         const filterParams = new URLSearchParams(filters);
         const endpoints = [
-            `/graph`,
-            `/graph/export?${filterParams.toString()}`,
             `/slider`,
+            "/users"
         ]
 
         const fetchData = async () => {
@@ -62,6 +61,7 @@ const AppProvider = ({children}) => {
                 setLoading(true);
                 const data = await fetchAllData(endpoints);
                 setResponseData(data);
+                console.log(data)
             } 
             catch (err) {
                 handleNotifications("error", err.message)
@@ -113,7 +113,10 @@ const AppProvider = ({children}) => {
         PORCENTAJE: null,
         ICONO: null,
     })
-    
+
+        // Edicion de Usuarios
+        const [users, setUsers] = React.useState(null);
+        console.log(users)
 
     return (
         <AppContext.Provider
@@ -164,6 +167,10 @@ const AppProvider = ({children}) => {
                 setEditingSliderCard,
                 sliderValues,
                 setSliderValues,
+
+                // Usuarios
+                users,
+                setUsers,
             }}
         >
             {children}
