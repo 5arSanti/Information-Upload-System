@@ -65,7 +65,7 @@ const UploadFileCard = ({id, label="Cargar Archivo", onChange, description}) => 
                 id={id}
                 name={id}
                 type="file"
-                accept=".pdf, .xlsx"
+                accept=".txt"
                 onChange={(event) => {onChange(event)}}
                 onClick={(event) => event.target.value = null}
             />

@@ -16,21 +16,20 @@ const UploadForm = () => {
 
     const [values, setValues] = React.useState({
         file: null,
-        selectedOption: null,
     });
 
     const handleFileUpload = async (event) => {
         event.preventDefault();
 
-        if (!(values.file && values.selectedOption)) {
-            handleNotifications("error", "Por favor, seleccione un archivo y el tipo antes de cargar.")
+        if (!values.file) {
+            handleNotifications("error", "Por favor, seleccione un archivo antes de cargar.")
             return;
         }
 
         const formData = new FormData();
         formData.append('file', values.file);
 
-        await handlePostFile(event, formData, "/file/upload", reloadLocation, {"selectedOption": values.selectedOption,});
+        await handlePostFile(event, formData, "/file/upload");
     };
 
     return(
@@ -41,19 +40,9 @@ const UploadForm = () => {
                 </SubTitle>
                 <UploadFileCard
                     id={"file"}
-                    onChange={(event) => handleFileChange(event, ['.xlsx', '.pdf'], setValues)}
-                    description={values.file ? values.file?.name : "Archivos PDF (.pdf) o Excel (.xlsx)"}
+                    onChange={(event) => handleFileChange(event, ['.txt'], setValues)}
+                    description={values.file ? values.file?.name : "Archivos planos o de texto (.txt)"}
                 />
-
-
-                <OptionInputCard
-                    id={"document-type-options"}
-                    label={"Seleccione el tipo de Documento a Cargar"}
-                    array={["Doc1","Doc2","Doc3","Doc4","Doc5"]}
-                    onChange={(event) => {handleInputChange("selectedOption", event, setValues)}}
-                    defaultValue={values?.selectedOption}
-                />
-
 
                 <ButtonCard 
                     title="Guardar y Publicar Archivo"

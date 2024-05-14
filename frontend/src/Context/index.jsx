@@ -114,9 +114,8 @@ const AppProvider = ({children}) => {
         ICONO: null,
     })
 
-        // Edicion de Usuarios
-        const [users, setUsers] = React.useState(null);
-        console.log(users)
+    // Edicion de Usuarios
+    const [users, setUsers] = React.useState(null);
 
     return (
         <AppContext.Provider
