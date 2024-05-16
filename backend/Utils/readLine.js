@@ -15,9 +15,9 @@ const readLine = (rl, columns) => {
         });
 
         rl.on('close', () => {
-            const addedRows = rows.filter(result => result === 'added').length;
-            const duplicateRows = rows.filter(result => result === 'duplicate').length;
-            const errorRows = rows.filter(result => result === 'error').length;
+            const addedRows = rows.filter(result => result == 'added').length + 1;
+            const duplicateRows = rows.filter(result => result == 'duplicate').length;
+            const errorRows = rows.filter(result => result == 'error').length;
 
             resolve({ addedRows, duplicateRows, errorRows });
         });

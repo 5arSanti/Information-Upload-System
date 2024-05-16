@@ -10,7 +10,7 @@ const insertInDatabase = (values, columns) => {
 			const placeholders = Array(columns.length).fill("?").join(",");
 			const query = `INSERT INTO vacantes_vigentes_completo (${columns.join(",")}) VALUES (${placeholders})`;
 
-			Promise.all([postQuery(query, columns)])
+			Promise.all([postQuery(query, values)])
 
 			resolve("added");
 		} catch (err) {
