@@ -19,6 +19,7 @@ const postQuery = (query, values) => {
             if (err) {
                 reject(err);
             } else {
+				console.log("sale");
                 resolve(results);
             }
         });

@@ -12,13 +12,14 @@ router.post("/upload", upload.single("file"), async (request, response) => {
 		  throw new Error("Error procesando el archivo");
 		}
 
-		const data = await readFile(uploadedFile);
-		console.log("data:", data);
+		const log = await readFile(uploadedFile);
+		console.log(log);
 
-		// return response.json({Status: "Success", message: `Hola: ${data.addedRows}`});
+        return response.status(200).json({log: log});
 
 	} catch (err) {
-		return response.status(500).json({Error: err.message});
+		console.log(err);
+		return response.status(500).json({Error: err});
 	}
 })
 

@@ -1,46 +1,25 @@
 const fs = require("fs");
 const readline = require('readline');
-const { insertInDatabase } = require("./insertInDatabase");
+
 const { getColumnNames } = require("./getColumnNames");
+const { readLine } = require("./readLine");
 
 const readFile = async (file) => {
-	const columns = await getColumnNames();
-	const rows = [];
-	const promises = [];
-
-	return new Promise((resolve, reject) => {
-		const filePath = file.path;
-		const fileStream = fs.createReadStream(filePath);
+	try {
+		const columns = await getColumnNames(); // Supongo que esta función devuelve una promesa que resuelve con los nombres de las columnas
 
 		const rl = readline.createInterface({
-			input: fileStream,
+			input: fs.createReadStream(file.path),
 			crlfDelay: Infinity
 		});
 
-		rl.on('line', async (line) => {
-			promises.push(async () => {
-				try {
-					const values = line.split('|$$|');
-					const result = await insertInDatabase(values, columns);
-					rows.push(result);
-				} catch (err) {
-					reject(err);
-				}
-			})
-		});
+		const log = await readLine(rl, columns);
+		return log;
+	} catch (err) {
+		console.log(err)
+		throw new Error(err)
+	}
 
-		rl.on('close', async () => {
-			console.log(promises)
-			await Promise.all(promises);
-			console.log(promises)
-
-			const addedRows = rows.filter(result => result === 'added').length;
-			const duplicateRows = rows.filter(result => result === 'duplicate').length;
-			const errorRows = rows.filter(result => result === 'error').length;
-
-			resolve({ addedRows, duplicateRows, errorRows });
-		});
-	});
 };
 
 
