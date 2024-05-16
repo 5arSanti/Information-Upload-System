@@ -8,8 +8,8 @@ const readLine = (rl, columns) => {
                 const values = line.split('|$$|');
                 const result = await insertInDatabase(values, columns);
                 rows.push(result);
-            } catch (err) {
-				console.log(err)
+            }
+			catch (err) {
                 rows.push('error');
             }
         });
@@ -23,7 +23,6 @@ const readLine = (rl, columns) => {
         });
 
         rl.on('error', (err) => {
-			console.log(err);
             reject(err);
         });
     });

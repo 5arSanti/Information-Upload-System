@@ -117,6 +117,10 @@ const AppProvider = ({children}) => {
     // Edicion de Usuarios
     const [users, setUsers] = React.useState(null);
 
+    // Edicion de Usuarios
+    const [logs, setLogs] = React.useState(null);
+    console.log(logs);
+
     return (
         <AppContext.Provider
             value={{
@@ -170,6 +174,10 @@ const AppProvider = ({children}) => {
                 // Usuarios
                 users,
                 setUsers,
+
+                //Logs
+                logs,
+                setLogs,
             }}
         >
             {children}

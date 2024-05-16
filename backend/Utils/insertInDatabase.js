@@ -1,7 +1,7 @@
 const { postQuery } = require("../database/query");
 
 
-const insertInDatabase = async (values, columns) => {
+const insertInDatabase = (values, columns) => {
 	return new Promise((resolve, reject) => {
 		try {
 			while (values.length < columns.length) {
@@ -10,12 +10,10 @@ const insertInDatabase = async (values, columns) => {
 			const placeholders = Array(columns.length).fill("?").join(",");
 			const query = `INSERT INTO vacantes_vigentes_completo (${columns.join(",")}) VALUES (${placeholders})`;
 
-			const results = postQuery(query, values);
-			console.log(results);
+			Promise.all([postQuery(query, columns)])
 
-			resolve('added');
+			resolve("added");
 		} catch (err) {
-			console.log(err)
 			if (err.code === 'ER_DUP_ENTRY') {
 				resolve('duplicate');
 			} else {

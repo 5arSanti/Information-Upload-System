@@ -29,7 +29,8 @@ const UploadForm = () => {
         const formData = new FormData();
         formData.append('file', values.file);
 
-        await handlePostFile(event, formData, "/file/upload");
+        const log = await handlePostFile(event, formData, "/file/upload");
+        context.setLogs(log || null)
     };
 
     return(

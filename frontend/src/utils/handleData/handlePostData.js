@@ -55,12 +55,13 @@ const handlePostFile = async (event, object, endpoint, callback = reloadLocation
       
         const response = await fetch(url, options);
         const data = await response.json();
+        console.log(data);
 
         if(data.Status === "Success") {
             handleNotifications("success", data.message);
-            callback();
+            // callback();
 
-            return data.Status;
+            return data.log;
         } else {
             handleNotifications("error", data.Error)
         }

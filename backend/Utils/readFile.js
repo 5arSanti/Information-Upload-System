@@ -6,7 +6,7 @@ const { readLine } = require("./readLine");
 
 const readFile = async (file) => {
 	try {
-		const columns = await getColumnNames(); // Supongo que esta función devuelve una promesa que resuelve con los nombres de las columnas
+		const columns = await getColumnNames();
 
 		const rl = readline.createInterface({
 			input: fs.createReadStream(file.path),
@@ -14,9 +14,14 @@ const readFile = async (file) => {
 		});
 
 		const log = await readLine(rl, columns);
+
+		fs.unlink(file.path, (err) => {
+			if (err) { throw new Error(err) }
+		})
+
 		return log;
-	} catch (err) {
-		console.log(err)
+	}
+	catch (err) {
 		throw new Error(err)
 	}
 
