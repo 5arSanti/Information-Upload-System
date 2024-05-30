@@ -3,7 +3,6 @@ const properties = PropertiesReader("./app.properties.ini")
 const jwt = require("jsonwebtoken");
 
 
-
 const verifyUser = (request, response, next) => {
 	const token = request.cookies.token;
 
