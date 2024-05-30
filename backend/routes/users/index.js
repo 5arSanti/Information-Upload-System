@@ -20,6 +20,7 @@ router.get("/", async (request, response) => {
 		return response.json({Error: err.message})
 	}
 });
+
 router.delete("/", async (request, response) => {
 	try {
 		const id = request.body.id;
@@ -39,6 +40,7 @@ router.delete("/", async (request, response) => {
 });
 
 const salt = 10;
+
 router.patch("/", async (request, response) => {
 	try {
 		const id = request.body.id;
