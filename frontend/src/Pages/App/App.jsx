@@ -14,7 +14,6 @@ import { AppContext, AppProvider } from "../../Context";
 
 //Screens
 import { MainContainer } from "../components/MainContainer";
-import { Home } from "../Screens/Home";
 
 import { Footer } from "../components/Footer";
 import { AccesibilityCard } from "../components/AccesibilityCard";

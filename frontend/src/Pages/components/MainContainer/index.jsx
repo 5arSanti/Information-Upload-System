@@ -6,7 +6,6 @@ import { IoIosArrowForward } from "react-icons/io";
 
 
 import "./styles.css"
-import { DropNav } from '../DropDownCards/DropNav';
 
 
 const MainContainer = ({children}) => {

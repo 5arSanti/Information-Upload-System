@@ -1,14 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { actualMonth, actualYear } from "../utils/dateFunctions";
-import { graphLabels } from "../utils/chartTypes";
 import { handleColorsByFilters } from "../utils/handleColors";
 
 import { api } from "../utils/api";
 import { fetchAllData } from "../utils/handleData/handleFetchData";
 import { handleNotifications } from "../utils/handleNotifications";
-import { handleInputChange } from "../utils/handleInputChange";
 
 
 export const AppContext = React.createContext();
@@ -29,28 +26,10 @@ const AppProvider = ({children}) => {
     const [message, setMessage] = React.useState("");
     const [name, setName] = React.useState("");
 
-    // Valores de la Grafica
-    const [editingGraph, setEditingGraph] = React.useState(false);
-    const [graphValues, setGraphValues] = React.useState({
-        title: null,
-        year: actualYear,
-        month: actualMonth,
-        grapLabelsType: "ofertasRegistradas",
-        graphType: "bar",
-        description: null,
-        values: [20000, 10000, 4, 7, 8, 1],
-    })
-    
-    const [filters, setFilters] = React.useState({
-        "AÑO": actualYear,
-        "MES": actualMonth,
-    })
-
     // RESPONSE:
     const [responseData, setResponseData] = React.useState({});
 
     React.useEffect(() => {
-        const filterParams = new URLSearchParams(filters);
         const endpoints = [
             `/slider`,
             "/users"
@@ -61,7 +40,6 @@ const AppProvider = ({children}) => {
                 setLoading(true);
                 const data = await fetchAllData(endpoints);
                 setResponseData(data);
-                console.log(data)
             } 
             catch (err) {
                 handleNotifications("error", err.message)
@@ -71,11 +49,7 @@ const AppProvider = ({children}) => {
             }
         }
         fetchData()
-    }, [filters]);
-
-    React.useEffect(() => {
-        handleInputChange("graphType", graphLabels[graphValues.grapLabelsType].type, setGraphValues);
-    }, [graphValues.grapLabelsType]);
+    }, []);
     
 
     //CAMBIO DE COLORES
@@ -119,7 +93,6 @@ const AppProvider = ({children}) => {
 
     // Edicion de Usuarios
     const [logs, setLogs] = React.useState(null);
-    console.log(logs);
 
     return (
         <AppContext.Provider
@@ -127,9 +100,6 @@ const AppProvider = ({children}) => {
                 apiUri,
                 loading,
                 setLoading,
-
-                filters,
-                setFilters,
                 
                 auth,
                 setAuth,
@@ -155,11 +125,6 @@ const AppProvider = ({children}) => {
                 activeHighContrast,
                 setActiveHighContrast,
 
-                // Valores de la Grafica
-                graphValues,
-                setGraphValues,
-                editingGraph,
-                setEditingGraph,
 
                 //Modal de confirmación
                 openConfirmationModal,
