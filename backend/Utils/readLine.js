@@ -7,20 +7,21 @@ const readLine = (rl, columns) => {
             try {
                 const values = line.split('|$$|');
                 const result = await insertInDatabase(values, columns);
-                rows.push(result);
+				rows.push(result);
+
             }
 			catch (err) {
                 rows.push('error');
             }
         });
 
-        rl.on('close', () => {
-            const addedRows = rows.filter(result => result == 'added').length + 1;
-            const duplicateRows = rows.filter(result => result == 'duplicate').length;
-            const errorRows = rows.filter(result => result == 'error').length;
+		rl.on('close', () => {
+			const addedRows = rows.filter(result => result === 'added').length + 1;
+			const duplicateRows = rows.filter(result => result === 'duplicate').length;
+			const errorRows = rows.filter(result => result === 'error').length;
 
-            resolve({ addedRows, duplicateRows, errorRows });
-        });
+			resolve({ addedRows, duplicateRows, errorRows });
+		});
 
         rl.on('error', (err) => {
             reject(err);
