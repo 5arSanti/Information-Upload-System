@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 31-05-2024 a las 05:11:08
+-- Tiempo de generación: 31-05-2024 a las 05:21:51
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,37 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `upload_information_system`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `graficas`
---
-
-CREATE TABLE `graficas` (
-  `id` int(11) NOT NULL,
-  `TITULO_GRAFICA` text NOT NULL,
-  `AÑO` int(4) NOT NULL,
-  `MES` int(2) NOT NULL,
-  `TIPO_DATOS` text NOT NULL,
-  `TIPO_GRAFICA` text NOT NULL,
-  `DESCRIPCION` longtext NOT NULL,
-  `FECHA_CREACION` datetime NOT NULL DEFAULT current_timestamp(),
-  `DATOS` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`DATOS`))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `graficas`
---
-
-INSERT INTO `graficas` (`id`, `TITULO_GRAFICA`, `AÑO`, `MES`, `TIPO_DATOS`, `TIPO_GRAFICA`, `DESCRIPCION`, `FECHA_CREACION`, `DATOS`) VALUES
-(1, 'Gráfica de cotejamiento - Abril del 2024', 2024, 4, 'ofertasRegistradas', 'line', 'Grafica de pruebas', '2024-04-04 17:51:48', NULL),
-(3, 'Grafica 1', 2024, 4, 'rangoSalarial', 'polarArea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2024-04-08 12:19:16', NULL),
-(4, 'Grafica 2', 2024, 4, 'nivelEducativo', 'bar', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2024-04-08 12:19:54', NULL),
-(6, 'Grafica 3', 2023, 9, 'ramaDeActividad', 'pie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2024-04-08 12:24:46', NULL),
-(7, 'Grafica 5', 2015, 4, 'nivelEducativo', 'radar', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', '2024-04-08 12:26:26', NULL),
-(8, 'Grafica con id 8', 2020, 12, 'grupoOcupacional', 'radar', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2024-04-09 16:59:10', NULL),
-(9, 'Grafica Nueva y bonita', 2015, 1, 'ofertasRegistradas', 'line', 'Lol', '2024-04-09 17:00:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -151,12 +120,6 @@ INSERT INTO `vacantes_vigentes_completo` (`id`, `CODIGO_PRESTADOR`, `CODIGO_VACA
 --
 
 --
--- Indices de la tabla `graficas`
---
-ALTER TABLE `graficas`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `login`
 --
 ALTER TABLE `login`
@@ -177,12 +140,6 @@ ALTER TABLE `vacantes_vigentes_completo`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `graficas`
---
-ALTER TABLE `graficas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `login`
